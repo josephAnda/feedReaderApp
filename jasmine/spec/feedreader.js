@@ -57,9 +57,11 @@ $(function() {
         //  Checks feed header, calls loadFeed(), then checks again
         var currentHeader; 
         beforeEach(function(done) {
-            //  Moved assignment into body
+            //  NOTE:  Order was switched of next two lines from last version.
+            //  This is an attempt to avoid the dreaded 'race condition!'
+            currentHeader = $('.header-title').html();
             loadFeed(1, done); // Loads new feed
-            currentHeader = $('.header-title').html();  
+              
         });
         afterEach(function(done) {
             loadFeed(0, done); // resets to old feed
